@@ -72,29 +72,25 @@ def sortnumber2():
 		- create a string of the sorted numbers and store it in array_str
 	'''
 	# The following line get the value of the text input called "numbers"
-	value = document.getElementsByName("numbers").value
-	value.split(",")
-	n = len(value)
+	value = document.getElementsByName("numbers")[0].value
+	new_array= value.split(',')
+	n = len(new_array)
 	swapping = True
 	while swapping is True:
 		swapping = False
 		m = 0
 		for i in range(1,n):
-			x = value[i-1]
-			y = value[i]
+			x = new_array[i-1]
+			y = new_array[i]
 			if x>y:
-				value[i-1] , value[i] = value[i] , value[i-1]
+				new_array[i-1] , new_array[i] = new_array[i] , new_array[i-1]
 				swapping = True
 				m = i
 		n = m
-	# Throw alert and stop if nothing in the text input
-	if value == "":
-		window.alert("Your textbox is empty")
-		return
 	
 	# Your code should start from here
 	# store the final string to the variable array_str
 	
-	document.getElementById("sorted").innerHTML = str(value)
+	document.getElementById("sorted").innerHTML = str(new_array)
 
 
