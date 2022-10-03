@@ -20,7 +20,7 @@ def generate():
 		if i == len(array)-1:
 			array_str += str(array[i]) +"."
 		else:
-			array_str += str(arrayx[i]) +", "
+			array_str += str(array[i]) +", "
 
 	# This line is to placed the string into the HTML
 	# under div section with the id called "generate"	
@@ -28,37 +28,25 @@ def generate():
 
 
 def sortnumber1():
-	new_str = "1, 15, 8, 10, 11."
-#   random_str = None
-#   document.getElementById("generate").innerHTML = random_str
-  # remove full stop
-	new_str = new_str	.strip(".")
-  	# make array
-	random_array = new_str.split(",")
-  	# #bubble sort algo
-	n = len(random_array)
-	for bi in range(n-1):
-		swapped = False
-		for si in range(1, n-bi):
-			if random_array[si-1] > random_array[si]:
-				swapped = True
-				random_array[si-1], random_array[si] = random_array[si], random_array[si-1] 
-		if not(swapped):
-			break
-  # '''  This function is used in Exercise 1.
-  #   The function is called when the sort button is clicked.
-
-  #   You need to do the following:
-  #   - get the list of numbers from the "generate" HTML id, use document.getElementById(id).innerHTML
-  #   - create a list of integers from the string of numbers
-  #   - call your sort function, either bubble sort or insertion sort
-  #   - create a string of the sorted numbers and store it in array_str
-  
-  # '''
-  #turn array into string and store into array str
-
-	array_str = ''.join(str(e) for e in random_array)
-	document.getElementById("sorted").innerHTML = array_str
+	array_str = document.getElementById("generate").innerHTML
+	sortedarray = array_str.strip(".")
+# make array
+	sortedarray = sortedarray.split(",")
+# #bubble sort algo
+	int_array =[]
+	for element in sortedarray:
+		int_array.append(int(element))
+		n = len(int_array)
+		for bi in range(n-1):
+			swapped = False
+			for si in range(1, n-bi):
+				if int_array[si-1] > int_array[si]:
+					swapped = True
+					int_array[si-1], int_array[si] = int_array[si], int_array[si-1] #swap
+			if not(swapped):
+				break
+	final_str = ', '.join(str(e) for e in int_array)
+	document.getElementById("sorted").innerHTML = final_str
 
 def sortnumber2():
 	'''	This function is used in Exercise 2.
@@ -73,7 +61,8 @@ def sortnumber2():
 	'''
 	# The following line get the value of the text input called "numbers"
 	value = document.getElementsByName("numbers")[0].value
-	new_array= value.split(',')
+	new_array= [int(x) for x in value.split(",")]
+	
 	n = len(new_array)
 	swapping = True
 	while swapping is True:
