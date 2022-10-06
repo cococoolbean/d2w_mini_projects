@@ -32,7 +32,7 @@ def sortnumber1():
 	sortedarray = array_str.strip(".")
 # make array
 	sortedarray = sortedarray.split(",")
-# #bubble sort algo
+# #bubble			 sort algo
 	int_array =[]
 	for element in sortedarray:
 		int_array.append(int(element))
@@ -61,25 +61,29 @@ def sortnumber2():
 	'''
 	# The following line get the value of the text input called "numbers"
 	value = document.getElementsByName("numbers")[0].value
-	new_array= [int(x) for x in value.split(",")]
-	
-	n = len(new_array)
-	swapping = True
-	while swapping is True:
-		swapping = False
-		m = 0
-		for i in range(1,n):
-			x = new_array[i-1]
-			y = new_array[i]
-			if x>y:
-				new_array[i-1] , new_array[i] = new_array[i] , new_array[i-1]
-				swapping = True
-				m = i
-		n = m
+	if value=="":
+		new_array = "Error"
+	else:
+		new_array= [float(x) for x in value.split(",")]
+		
+		n = len(new_array)
+		swapping = True
+
+		while swapping is True:
+			swapping = False
+			m = 0
+			for i in range(1,n):
+				x = new_array[i-1]
+				y = new_array[i]
+				if x>y:
+					new_array[i-1] , new_array[i] = new_array[i] , new_array[i-1]
+					swapping = True
+					m = i
+			n = m
 	
 	# Your code should start from here
 	# store the final string to the variable array_str
 	
-	document.getElementById("sorted").innerHTML = str(new_array)
+	document.getElementById("sorted").innerHTML = str(", ".join(new_array))
 
 
